@@ -1,0 +1,87 @@
+**Schema (MySQL v5.7)**
+
+-- CHALLENGE LAB
+
+    -- create RESTART table
+    CREATE TABLE RESTART (
+      `Student_ID` INT(5),
+      `Student_Name` CHAR(50),
+      `Restart_City` CHAR(20),
+      `Graduation_Date` DATETIME
+    );
+    
+    -- create CLOUD_PRACTITIONER table
+    CREATE TABLE CLOUD_PRACTITIONER (
+      `Student_ID` INT(5),
+      `Certification_Date` DATETIME
+    );
+    
+    -- inserting data on RESTART table
+    INSERT INTO RESTART VALUES (1001, "Juan De la Cruz", "Manila", "2024-01-10");
+    INSERT INTO RESTART VALUES (1002, "Maria Clara", "Manila", "2024-01-10");
+    INSERT INTO RESTART VALUES (1003, "John Doe", "New York", "2024-01-10");
+    INSERT INTO RESTART VALUES (1004, "Taylor Swift", "New York", "2024-01-10");
+    INSERT INTO RESTART VALUES (1005, "Diya Ranjit", "Mumbai", "2024-01-10");
+    INSERT INTO RESTART VALUES (1006, "Guy Singh", "Mumbai", "2024-01-10");
+    INSERT INTO RESTART VALUES (1007, "Harry Potter", "London", "2024-01-10");
+    INSERT INTO RESTART VALUES (1008, "Hermione Granger", "London", "2024-01-10");
+    INSERT INTO RESTART VALUES (1009, "Park Shin Hye", "Seoul", "2024-01-10");
+    INSERT INTO RESTART VALUES (1010, "Kim Bap Go", "Seoul", "2024-01-10");
+    
+    INSERT INTO CLOUD_PRACTITIONER VALUES (1001, "2024-01-20");
+    INSERT INTO CLOUD_PRACTITIONER VALUES (1003, "2024-01-20");
+    INSERT INTO CLOUD_PRACTITIONER VALUES (1006, "2024-01-20");
+    INSERT INTO CLOUD_PRACTITIONER VALUES (1008, "2024-01-20");
+    INSERT INTO CLOUD_PRACTITIONER VALUES (1010, "2024-01-20");
+
+---
+
+**Query #1**
+
+    SELECT *
+    FROM RESTART;
+
+| Student_ID | Student_Name     | Restart_City | Graduation_Date     |
+| ---------- | ---------------- | ------------ | ------------------- |
+| 1001       | Juan De la Cruz  | Manila       | 2024-01-10 00:00:00 |
+| 1002       | Maria Clara      | Manila       | 2024-01-10 00:00:00 |
+| 1003       | John Doe         | New York     | 2024-01-10 00:00:00 |
+| 1004       | Taylor Swift     | New York     | 2024-01-10 00:00:00 |
+| 1005       | Diya Ranjit      | Mumbai       | 2024-01-10 00:00:00 |
+| 1006       | Guy Singh        | Mumbai       | 2024-01-10 00:00:00 |
+| 1007       | Harry Potter     | London       | 2024-01-10 00:00:00 |
+| 1008       | Hermione Granger | London       | 2024-01-10 00:00:00 |
+| 1009       | Park Shin Hye    | Seoul        | 2024-01-10 00:00:00 |
+| 1010       | Kim Bap Go       | Seoul        | 2024-01-10 00:00:00 |
+
+---
+**Query #2**
+
+    SELECT *
+    FROM CLOUD_PRACTITIONER;
+
+| Student_ID | Certification_Date  |
+| ---------- | ------------------- |
+| 1001       | 2024-01-20 00:00:00 |
+| 1003       | 2024-01-20 00:00:00 |
+| 1006       | 2024-01-20 00:00:00 |
+| 1008       | 2024-01-20 00:00:00 |
+| 1010       | 2024-01-20 00:00:00 |
+
+---
+**Query #3**
+
+    SELECT RESTART.Student_ID, Student_Name, Certification_Date
+    FROM RESTART
+    INNER JOIN CLOUD_PRACTITIONER 
+    ON RESTART.Student_ID = CLOUD_PRACTITIONER.Student_ID;
+
+| Student_ID | Student_Name     | Certification_Date  |
+| ---------- | ---------------- | ------------------- |
+| 1001       | Juan De la Cruz  | 2024-01-20 00:00:00 |
+| 1003       | John Doe         | 2024-01-20 00:00:00 |
+| 1006       | Guy Singh        | 2024-01-20 00:00:00 |
+| 1008       | Hermione Granger | 2024-01-20 00:00:00 |
+| 1010       | Kim Bap Go       | 2024-01-20 00:00:00 |
+
+---
